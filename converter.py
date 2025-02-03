@@ -42,6 +42,12 @@ teacher_template = env.get_template("teacher.html")
 def convert(xls_content: io.BytesIO):
     classes: dict[ClassID, Class] = {}
     teachers: dict[TeacherID, Teacher] = {}
+    teachers[TeacherID("empty")] = Teacher(
+        TeacherID("empty"),
+        "",
+        [[defaultdict(list) for _ in range(9)] for _ in range(6)],
+    )
+
     wb = xlrd.open_workbook_xls(file_contents=xls_content.read())
     ws = wb.sheet_by_name("xls")
     rows = ws.nrows
@@ -76,9 +82,10 @@ def convert(xls_content: io.BytesIO):
         th = int(r[3])
         course_name: CourseName = CourseName(r[5])
 
-        if teacher_id:
-            c.courses[week][th][course_name].append(teacher_id)
-            c.courses[week][th][course_name].sort()
+        if not teacher_id:
+            teacher_id = TeacherID("empty")
+        c.courses[week][th][course_name].append(teacher_id)
+        c.courses[week][th][course_name].sort()
 
         t.courses[week][th][course_name].append(class_id)
         t.courses[week][th][course_name].sort()
@@ -95,6 +102,8 @@ def convert(xls_content: io.BytesIO):
             zip.writestr(f"C{class_id}.HTML", generated_html)
 
         for teacher_id, teacher in teachers.items():
+            if teacher_id == TeacherID("empty"):
+                continue
             generated_html = teacher_template.render(
                 teacher=teacher,
                 teacher_id=teacher_id,
