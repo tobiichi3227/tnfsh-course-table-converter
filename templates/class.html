@@ -1,0 +1,324 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>班級課表</title>
+<style>
+ @font-face
+    {font-family:新細明體;
+    panose-1:2 2 5 0 0 0 0 0 0 0; }
+@font-face
+    {font-family:細明體;
+    panose-1:2 2 5 9 0 0 0 0 0 0; }
+@font-face
+    {font-family:"Cambria Math";
+    panose-1:2 4 5 3 5 4 6 3 2 4; }
+@font-face
+    {font-family:微軟正黑體;
+    panose-1:2 11 6 4 3 5 4 4 2 4; }
+@font-face
+    {font-family:"\@微軟正黑體";
+    panose-1:2 11 6 4 3 5 4 4 2 4; }
+@font-face
+    {font-family:"\@細明體";
+    panose-1:2 2 5 9 0 0 0 0 0 0; }
+@font-face
+    {font-family:"\@新細明體";
+    panose-1:2 2 5 0 0 0 0 0 0 0; }
+ @media (max-width: 576px) {
+    p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:8.0pt;
+        font-family:"新細明體",serif;
+        }
+ }
+ @media (max-width: 767px) {
+    p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:10.0pt;
+        font-family:"新細明體",serif;
+        }
+ }
+
+ @media (min-width: 768px) {
+    p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:12.0pt;
+        font-family:"新細明體",serif;
+        }
+ }
+h1
+    {
+    margin-right:0cm;
+    margin-left:0cm;
+    font-size:30.0pt;
+    font-family:細明體;
+    }
+h2
+    {
+    margin-right:0cm;
+    margin-left:0cm;
+    font-size:27.0pt;
+    font-family:細明體;
+    }
+h3
+    {
+    margin-right:0cm;
+    margin-left:0cm;
+    font-size:24.0pt;
+    font-family:細明體;
+    }
+h4
+    {    margin-right:0cm;
+    margin-left:0cm;
+    font-size:21.0pt;
+    font-family:細明體;
+    }
+h5
+    {    margin-right:0cm;
+    margin-left:0cm;
+    font-size:15.0pt;
+    font-family:細明體;
+    }
+h6
+    {
+    margin-right:0cm;
+    margin-left:0cm;
+    font-size:12.0pt;
+    font-family:細明體;
+    }
+a:link, span.MsoHyperlink
+    {
+    color:blue;
+    text-decoration:underline;
+    text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+    {
+    color:blue;
+    text-decoration:underline;
+    text-underline:single;}
+span.1
+    {
+    font-family:"Calibri Light",sans-serif;
+    font-weight:bold;}
+span.2
+    {
+    font-family:"Calibri Light",sans-serif;
+    font-weight:bold;}
+span.3
+    {    font-family:"Calibri Light",sans-serif;
+    font-weight:bold;}
+span.4
+    {    font-family:"Calibri Light",sans-serif;
+ }
+span.5
+    {    font-family:"Calibri Light",sans-serif;
+    font-weight:bold;}
+span.6
+    {    font-family:"Calibri Light",sans-serif;
+ }
+.MsoChpDefault
+    {    font-size:10.0pt;
+    }
+@page WordSection1
+    {size:595.3pt 841.9pt;
+    margin:72.0pt 90.0pt 72.0pt 90.0pt;
+    }
+div.WordSection1
+    {page:WordSection1;}
+</style>
+</head>
+
+<body bgcolor=white lang=ZH-TW link=blue vlink=blue style='tab-interval:24.0pt'>
+    <div class=WordSection1>
+        <p class=MsoNormal style='margin-bottom:12.0pt'><span lang=EN-US
+        style='font-family:"微軟正黑體",sans-serif'></span></p>
+
+        {% set number_chinese = ["", "一", "二", "三"] %}
+
+        <h5 align=center style='text-align:center'>
+            <span lang=EN-US style='font-family: "微軟正黑體",sans-serif'>{{ ccls.class_id }}</span>
+            <span style='font-family:"微軟正黑體",sans-serif;color:blue'>
+                {{ number_chinese[ccls.class_num // 100] }}年<span lang=EN-US>{{ "%02d" % (ccls.class_num % 100) }}</span>班
+            </span>
+            <span style='font-family:"微軟正黑體",sans-serif'>班級課表
+                <span lang=EN-US></span>
+            </span>
+        </h5>
+
+        <p class=MsoNormal align=center style='text-align:center'>
+            <span style='font-family:"微軟正黑體",sans-serif;color:red'>更新日期：<span lang=EN-US>{{ update_timestamp }}</span></span>
+            <span lang=EN-US style='font-family:"微軟正黑體",sans-serif'></span>
+        </p>
+
+        {% set timeinfo = [
+            {},
+            {"number": "一", "start_time": "0800", "end_time": "0850"},
+            {"number": "二", "start_time": "0900", "end_time": "0950"},
+            {"number": "三", "start_time": "1010", "end_time": "1100"},
+            {"number": "四", "start_time": "1110", "end_time": "1200"},
+            {},
+            {"number": "五", "start_time": "1310", "end_time": "1400"},
+            {"number": "六", "start_time": "1410", "end_time": "1500"},
+            {"number": "七", "start_time": "1510", "end_time": "1600"},
+            {"number": "八", "start_time": "1610", "end_time": "1700"},
+        ] %}
+
+        <div align=center>
+            <table class=MsoNormalTable border=1 cellspacing=1 cellpadding=0 width="90%"
+            style='width:90.0%;mso-cellspacing:.6pt;border:outset 1.5pt;'>
+                <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+                    <td colspan=8 style='padding:.6pt .6pt .6pt .6pt'>
+                        <p class=MsoNormal align=right style='text-align:right'><b><span lang=EN-US
+                        style='font-family:"微軟正黑體",sans-serif'><br>
+                        <a href="_ClassIndex.HTML"><span lang=EN-US><span lang=EN-US>回班級課表索引頁</span></span></a></span></b></p>
+                    </td>
+                </tr>
+
+                <tr style='mso-yfti-irow:1;'>
+                    <td colspan=2 style='padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'>&nbsp;</span></p>
+                    </td>
+                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>一</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>二</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>三</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>四</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>五</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td style='border:none;padding:.6pt .6pt .6pt .6pt'></td>
+                </tr>
+
+                {% set th = [-1, 1, 2, 3, 4, -1, 5, 6, 7, 8] %}
+                {% for t in th %}
+                <tr style='mso-yfti-irow:{{ loop.index0 }}'>
+                    {% if loop.index0 == 0 %}
+                        {% continue %}
+                    {% endif %}
+                    {% if loop.index0 == 5 %}
+                        <tr style="mso-yfti-irow:6">
+                            <td colspan="8" style="background:#BBBBBB;padding:.6pt .6pt .6pt .6pt">
+                            <p class="MsoNormal" align="center" style="text-align:center"><span style="font-family:'微軟正黑體',sans-serif">午休<span lang="EN-US"></span></span></p>
+                            </td>
+                        </tr>
+                        {% continue %}
+                    {% endif %}
+
+                    <td style="padding:.6pt .6pt .6pt .6pt">
+                        <p class="MsoNormal" align="center" style="text-align:center"><span style="font-family:'微軟正黑體',sans-serif">第<span lang="EN-US"><br>
+                        </span>{{ timeinfo[loop.index0]['number'] }}<span lang="EN-US"><br>
+                        </span>節<span lang="EN-US"></span></span></p>
+                    </td>
+                    <td style="padding:.6pt .6pt .6pt .6pt">
+                        <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US" style="font-family:'微軟正黑體',sans-serif">{{ timeinfo[loop.index0]['start_time'] }}<br>
+                        </span><span style="font-family:'微軟正黑體',sans-serif">｜<span lang="EN-US"><br>
+                        {{ timeinfo[loop.index0]['end_time'] }}</span></span></p>
+                    </td>
+
+                    {% for week in range(1, 5 + 1) %}
+                    <td style="padding:.6pt .6pt .6pt .6pt">
+                        {% if ccls.courses[week][t] | length > 1 %}
+                            <p class="MsoNormal" align="center" style="text-align:center">
+                            {% for course_name, _ in ccls.courses[week][t].items() %}
+                                <span style="font-family:'微軟正黑體',sans-serif">{{ course_name }}</span>
+                            {% endfor %}
+                            </p>
+                        {% else %}
+                            {% for course_name, _ in ccls.courses[week][t].items() %}
+                                {% set pos = course_name.find("-") %}
+                                {% if pos == -1 %}
+                                    {% set pos = course_name.find("：") %}
+                                {% endif %}
+
+                                {% if pos != -1 and course_name | length > 11 %}
+                                <p class="MsoNormal" align="center" style="text-align:center">
+                                    <span style="font-family:'微軟正黑體',sans-serif">{{ course_name[0:pos + 1] }}</span>
+                                </p>
+                                <p class="MsoNormal" align="center" style="text-align:center">
+                                    <span style="font-family:'微軟正黑體',sans-serif">{{ course_name[pos + 1:] }}</span>
+                                </p>
+                                {% else %}
+                                <p class="MsoNormal" align="center" style="text-align:center">
+                                    <span style="font-family:'微軟正黑體',sans-serif">{{ course_name }}</span>
+                                </p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if ccls.courses[week][t] | length > 1 %}
+                            <p class="MsoNormal" align="center" style="text-align:center">
+                            {% for _, class_teachers in ccls.courses[week][t].items() %}
+                                {% for teacher_id in class_teachers %}
+                                    <span style="font-family:'微軟正黑體',sans-serif">
+                                        <a href="T{{ teacher_id }}.HTML">{{ teachers[teacher_id].name }}</a>
+                                    </span>
+                                {% endfor %}
+                            {% endfor %}
+                            </p>
+                        {% else %}
+                            {% for _, class_teachers in ccls.courses[week][t].items() %}
+                                {% if class_teachers | length > 3 %}
+                                    <p class="MsoNormal" align="center" style="text-align:center">
+                                    {% for teacher_id in class_teachers[0:3] %}
+                                        <span style="font-family:'微軟正黑體',sans-serif">
+                                            <a href="T{{ teacher_id }}.HTML">{{ teachers[teacher_id].name }}</a>
+                                        </span>
+                                    {% endfor %}
+                                    </p>
+                                    <p class="MsoNormal" align="center" style="text-align:center">
+                                    {% for teacher_id in class_teachers[3:] %}
+                                        <span style="font-family:'微軟正黑體',sans-serif">
+                                            <a href="T{{ teacher_id }}.HTML">{{ teachers[teacher_id].name }}</a>
+                                        </span>
+                                    {% endfor %}
+                                    </p>
+                                {% else %}
+                                    <p class="MsoNormal" align="center" style="text-align:center">
+                                    {% for teacher_id in class_teachers %}
+                                        <span style="font-family:'微軟正黑體',sans-serif">
+                                            <a href="T{{ teacher_id }}.HTML">{{ teachers[teacher_id].name }}</a>
+                                        </span>
+                                    {% endfor %}
+                                    </p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+                    </td>
+                    {% endfor %}
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    <p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'></span></p>
+    </div>
+</body>
+</html>
