@@ -36,11 +36,13 @@ env = jinja2.Environment(
     extensions=["jinja2.ext.loopcontrols"],
 )
 class_template = env.get_template("class.html")
+class_index_template = env.get_template("classindex.html")
 teacher_template = env.get_template("teacher.html")
 
 
 def convert(xls_content: io.BytesIO):
     classes: dict[ClassID, Class] = {}
+    classnum_to_class: dict[int, ClassID] = {}
     teachers: dict[TeacherID, Teacher] = {}
     teachers[TeacherID("empty")] = Teacher(
         TeacherID("empty"),
@@ -67,6 +69,7 @@ def convert(xls_content: io.BytesIO):
                 int(r[1]),
                 [[defaultdict(list) for _ in range(9)] for _ in range(6)],
             )
+            classnum_to_class[int(r[1])] = class_id
         c = classes[class_id]
 
         teacher_id: TeacherID = TeacherID(r[9])
@@ -111,5 +114,10 @@ def convert(xls_content: io.BytesIO):
                 update_timestamp=update_timestamp,
             )
             zip.writestr(f"T{teacher_id}.HTML", generated_html)
+
+        generated_html = class_index_template.render(
+            classnum_to_class=classnum_to_class, update_timestamp=update_timestamp
+        )
+        zip.writestr("_ClassIndex.html", generated_html)
 
     return output_zip
