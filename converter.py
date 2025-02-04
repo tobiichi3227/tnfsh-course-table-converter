@@ -38,6 +38,7 @@ env = jinja2.Environment(
 class_template = env.get_template("class.html")
 class_index_template = env.get_template("classindex.html")
 teacher_template = env.get_template("teacher.html")
+teacher_index_template = env.get_template("teacherindex.html")
 
 
 def convert(xls_content: io.BytesIO):
@@ -119,5 +120,44 @@ def convert(xls_content: io.BytesIO):
             classnum_to_class=classnum_to_class, update_timestamp=update_timestamp
         )
         zip.writestr("_ClassIndex.html", generated_html)
+
+        subjects = [
+            {"chinese": "國文科", "range": {"A"}, "teachers": []},
+            {"chinese": "英文科", "range": {"B"}, "teachers": []},
+            {"chinese": "數學科", "range": {"C"}, "teachers": []},
+            {"chinese": "社會科", "range": {"D", "E", "F"}, "teachers": []},
+            {"chinese": "自然科", "range": {"G", "H", "I"}, "teachers": []},
+            {"chinese": "藝能科", "range": {"J", "K", "L"}, "teachers": []},
+            {"chinese": "外聘教師", "range": {}, "teachers": []},
+        ]
+        r_s = {
+            "A": subjects[0],
+            "B": subjects[1],
+            "C": subjects[2],
+            "D": subjects[3],
+            "E": subjects[3],
+            "F": subjects[3],
+            "G": subjects[4],
+            "H": subjects[4],
+            "I": subjects[4],
+            "J": subjects[5],
+            "K": subjects[5],
+            "L": subjects[5],
+        }
+        teachers.pop(TeacherID("empty"))
+        for teacher_id in sorted(teachers.keys()):
+            if not teacher_id:
+                continue
+            group = teacher_id[0]
+
+            if group in r_s:
+                r_s[group]["teachers"].append(teacher_id)
+            else:
+                subjects[6]["teachers"].append(teacher_id)
+
+        generated_html = teacher_index_template.render(
+            teachers=teachers, subjects=subjects, update_timestamp=update_timestamp
+        )
+        zip.writestr("_TeachIndex.html", generated_html)
 
     return output_zip
