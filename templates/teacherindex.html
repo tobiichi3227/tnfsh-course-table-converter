@@ -1,36 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 <title>班級、教師、教室課表資料</title>
 <style>
  @font-face
-	{font-family:新細明體;
-	panose-1:2 2 5 0 0 0 0 0 0 0;
-	}
+    {font-family:新細明體;}
 @font-face
-	{font-family:細明體;
-	panose-1:2 2 5 9 0 0 0 0 0 0;
-	}
+    {font-family:細明體;}
 @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;
-	}
+    {font-family:"Cambria Math";}
 @font-face
-	{font-family:微軟正黑體;
-	panose-1:2 11 6 4 3 5 4 4 2 4;
-	}
+    {font-family:微軟正黑體;}
 @font-face
-	{font-family:"\@微軟正黑體";
-	panose-1:2 11 6 4 3 5 4 4 2 4;
-	}
+    {font-family:"\@微軟正黑體";}
 @font-face
-	{font-family:"\@細明體";
-	panose-1:2 2 5 9 0 0 0 0 0 0;
-	}
+    {font-family:"\@細明體";}
 @font-face
-	{font-family:"\@新細明體";
-	panose-1:2 2 5 0 0 0 0 0 0 0;
-	}
+    {font-family:"\@新細明體";}
  @media (max-width: 576px) {
     p.MsoNormal, li.MsoNormal, div.MsoNormal
         {
@@ -138,28 +125,28 @@ div.WordSection1
 </style>
 </head>
 
-<body bgcolor=white lang=ZH-TW link=blue vlink=blue style='tab-interval:24.0pt'>
+<body lang=ZH-TW>
 
     <div class=WordSection1>
 
-        <h2 align=center style='text-align:center'><span style='font-family:"微軟正黑體",sans-serif'>教師索引一覽表<span
+        <h2 style='text-align:center'><span style='font-family:"微軟正黑體",sans-serif'>教師索引一覽表<span
         lang=EN-US><o:p></o:p></span></span></h2>
 
-        <p class=MsoNormal align=center style='text-align:center'>
+        <p class=MsoNormal style='text-align:center'>
             <span style='font-size:20.0pt;mso-bidi-font-size:12.0pt;color:red'>
                 更新日期：<span lang=EN-US>{{ update_timestamp }}</span>
             </span>
             <span lang=EN-US style='font-size:16.0pt;mso-bidi-font-size:12.0pt'></span>
         </p>
 
-        <div align=center>
-            <table class=MsoNormalTable border=1 cellspacing=1 cellpadding=0 width="90%"
+        <div>
+            <table class=MsoNormalTable border=1
             style='width:90.0%;mso-cellspacing:.6pt;border:outset 1.5pt;mso-yfti-tbllook:
             1184;mso-padding-alt:.6pt .6pt .6pt .6pt'>
                 {% for subject in subjects %}
                     <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
                         <td colspan=5 style='padding:.6pt .6pt .6pt .6pt'>
-                            <p class=MsoNormal align=center style='text-align:center'><span
+                            <p class=MsoNormal style='text-align:center'><span
                             style='font-size:16.0pt;mso-bidi-font-size:12.0pt;font-family:"微軟正黑體",sans-serif'>{{ subject['chinese'] }}</span><span
                             lang=EN-US style='font-size:16.0pt;mso-bidi-font-size:12.0pt;font-family:
                             "微軟正黑體",sans-serif'><o:p></o:p></span></p>
@@ -180,7 +167,7 @@ div.WordSection1
                             {% set ns.counter = ns.counter + 1 %}
 
                             <td style='padding:.6pt .6pt .6pt .6pt'>
-                            <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+                            <p class=MsoNormal style='text-align:center'><span lang=EN-US
                             style='font-size:16.0pt;mso-bidi-font-size:12.0pt;font-family:"微軟正黑體",sans-serif'><a
                             href="T{{ teacher_id }}.html">{{ teacher_id }} {{ teachers[teacher_id].name }}</a><o:p></o:p></span></p>
                             </td>
@@ -197,7 +184,7 @@ div.WordSection1
                 {% for subject in subjects %}
                     <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
                         <td colspan=5 style='padding:.6pt .6pt .6pt .6pt'>
-                            <p class=MsoNormal align=center style='text-align:center'><span
+                            <p class=MsoNormal style='text-align:center'><span
                             style='font-size:22.0pt;mso-bidi-font-size:12.0pt;font-family:"微軟正黑體",sans-serif'>{{ grade }}</span><span
                             lang=EN-US style='font-size:16.0pt;mso-bidi-font-size:12.0pt;font-family:
                             "微軟正黑體",sans-serif'><o:p></o:p></span></p>
@@ -214,7 +201,7 @@ div.WordSection1
                             {% set class_id = classnum_to_class[class_num] %}
 
                                 <td style='padding:.6pt .6pt .6pt .6pt'>
-                                <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+                                <p class=MsoNormal style='text-align:center'><span lang=EN-US
                                 style='font-size:22.0pt;mso-bidi-font-size:12.0pt;font-family:"微軟正黑體",sans-serif'><a
                                     href="C{{ class_id }}.html">{{ class_num }}</a><o:p></o:p></span></p>
                                 </td>

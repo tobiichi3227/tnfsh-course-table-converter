@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -6,26 +7,19 @@
 <title>教師課表</title>
 <style>
  @font-face
-    {font-family:新細明體;
-    panose-1:2 2 5 0 0 0 0 0 0 0; }
+    {font-family:新細明體;}
 @font-face
-    {font-family:細明體;
-    panose-1:2 2 5 9 0 0 0 0 0 0; }
+    {font-family:細明體;}
 @font-face
-    {font-family:"Cambria Math";
-    panose-1:2 4 5 3 5 4 6 3 2 4; }
+    {font-family:"Cambria Math";}
 @font-face
-    {font-family:微軟正黑體;
-    panose-1:2 11 6 4 3 5 4 4 2 4; }
+    {font-family:微軟正黑體;}
 @font-face
-    {font-family:"\@微軟正黑體";
-    panose-1:2 11 6 4 3 5 4 4 2 4; }
+    {font-family:"\@微軟正黑體";}
 @font-face
-    {font-family:"\@細明體";
-    panose-1:2 2 5 9 0 0 0 0 0 0; }
+    {font-family:"\@細明體";}
 @font-face
-    {font-family:"\@新細明體";
-    panose-1:2 2 5 0 0 0 0 0 0 0; }
+    {font-family:"\@新細明體";}
  @media (max-width: 576px) {
     p.MsoNormal, li.MsoNormal, div.MsoNormal
         {
@@ -136,12 +130,12 @@ div.WordSection1
 </style>
 </head>
 
-<body bgcolor=white lang=ZH-TW link=blue vlink=blue style='tab-interval:24.0pt'>
+<body lang=ZH-TW>
     <div class=WordSection1>
         <p class=MsoNormal style='margin-bottom:12.0pt'><span lang=EN-US
         style='font-family:"微軟正黑體",sans-serif'></span></p>
 
-        <h5 align=center style='text-align:center'>
+        <h5 style='text-align:center'>
             <span lang=EN-US style='font-family: "微軟正黑體",sans-serif'>{{ teacher_id }}</span>
             <span style="font-family:'微軟正黑體',sans-serif;color:blue">{{ teacher.name }}</span>
             <span style='font-family:"微軟正黑體",sans-serif'>教師課表
@@ -149,7 +143,7 @@ div.WordSection1
             </span>
         </h5>
 
-        <p class=MsoNormal align=center style='text-align:center'>
+        <p class=MsoNormal style='text-align:center'>
             <span style='font-family:"微軟正黑體",sans-serif;color:red'>更新日期：<span lang=EN-US>{{ update_timestamp }}</span></span>
             <span lang=EN-US style='font-family:"微軟正黑體",sans-serif'></span>
         </p>
@@ -167,12 +161,12 @@ div.WordSection1
             {"number": "八", "start_time": "1610", "end_time": "1700"},
         ] %}
 
-        <div align=center>
-            <table class=MsoNormalTable border=1 cellspacing=1 cellpadding=0 width="90%"
+        <div>
+            <table class=MsoNormalTable border=1
             style='width:90.0%;mso-cellspacing:.6pt;border:outset 1.5pt;'>
                 <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
                     <td colspan=8 style='padding:.6pt .6pt .6pt .6pt'>
-                        <p class=MsoNormal align=right style='text-align:right'><b><span lang=EN-US
+                        <p class=MsoNormal style='text-align:right'><b><span lang=EN-US
                         style='font-family:"微軟正黑體",sans-serif'><br>
                         <a href="_TeachIndex.HTML"><span lang=EN-US><span lang=EN-US>回教師課表索引頁</span></span></a></span></b></p>
                     </td>
@@ -180,31 +174,31 @@ div.WordSection1
 
                 <tr style='mso-yfti-irow:1;'>
                     <td colspan=2 style='padding:.6pt .6pt .6pt .6pt'>
-                    <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+                    <p class=MsoNormal style='text-align:center'><span lang=EN-US
                     style='font-family:"微軟正黑體",sans-serif'>&nbsp;</span></p>
                     </td>
-                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
-                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
                     style='font-family:"微軟正黑體",sans-serif'>一</span></b><span lang=EN-US
                     style='font-family:"微軟正黑體",sans-serif'></span></p>
                     </td>
-                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
-                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
                     style='font-family:"微軟正黑體",sans-serif'>二</span></b><span lang=EN-US
                     style='font-family:"微軟正黑體",sans-serif'></span></p>
                     </td>
-                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
-                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
                     style='font-family:"微軟正黑體",sans-serif'>三</span></b><span lang=EN-US
                     style='font-family:"微軟正黑體",sans-serif'></span></p>
                     </td>
-                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
-                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
                     style='font-family:"微軟正黑體",sans-serif'>四</span></b><span lang=EN-US
                     style='font-family:"微軟正黑體",sans-serif'></span></p>
                     </td>
-                    <td width="15%" style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
-                    <p class=MsoNormal align=center style='text-align:center'><b><span
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
                     style='font-family:"微軟正黑體",sans-serif'>五</span></b><span lang=EN-US
                     style='font-family:"微軟正黑體",sans-serif'></span></p>
                     </td>
@@ -220,19 +214,19 @@ div.WordSection1
                     {% if loop.index0 == 5 %}
                         <tr style="mso-yfti-irow:6">
                             <td colspan="8" style="background:#BBBBBB;padding:.6pt .6pt .6pt .6pt">
-                            <p class="MsoNormal" align="center" style="text-align:center"><span style="font-family:'微軟正黑體',sans-serif">午休<span lang="EN-US"></span></span></p>
+                            <p class="MsoNormal" style="text-align:center"><span style="font-family:'微軟正黑體',sans-serif">午休<span lang="EN-US"></span></span></p>
                             </td>
                         </tr>
                         {% continue %}
                     {% endif %}
 
                     <td style="padding:.6pt .6pt .6pt .6pt">
-                        <p class="MsoNormal" align="center" style="text-align:center"><span style="font-family:'微軟正黑體',sans-serif">第<span lang="EN-US"><br>
+                        <p class="MsoNormal" style="text-align:center"><span style="font-family:'微軟正黑體',sans-serif">第<span lang="EN-US"><br>
                         </span>{{ timeinfo[loop.index0]['number'] }}<span lang="EN-US"><br>
                         </span>節<span lang="EN-US"></span></span></p>
                     </td>
                     <td style="padding:.6pt .6pt .6pt .6pt">
-                        <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US" style="font-family:'微軟正黑體',sans-serif">{{ timeinfo[loop.index0]['start_time'] }}<br>
+                        <p class="MsoNormal" style="text-align:center"><span lang="EN-US" style="font-family:'微軟正黑體',sans-serif">{{ timeinfo[loop.index0]['start_time'] }}<br>
                         </span><span style="font-family:'微軟正黑體',sans-serif">｜<span lang="EN-US"><br>
                         {{ timeinfo[loop.index0]['end_time'] }}</span></span></p>
                     </td>
@@ -240,7 +234,7 @@ div.WordSection1
                     {% for week in range(1, 5 + 1) %}
                     <td style="padding:.6pt .6pt .6pt .6pt">
                         {% if teacher.courses[week][t] | length > 1 %}
-                            <p class="MsoNormal" align="center" style="text-align:center">
+                            <p class="MsoNormal" style="text-align:center">
                             {% for course_name, _ in teacher.courses[week][t].items() %}
                                 <span style="font-family:'微軟正黑體',sans-serif">{{ course_name }}</span>
                             {% endfor %}
@@ -253,14 +247,14 @@ div.WordSection1
                                 {% endif %}
 
                                 {% if pos != -1 and course_name | length > 10 %}
-                                <p class="MsoNormal" align="center" style="text-align:center">
+                                <p class="MsoNormal" style="text-align:center">
                                     <span style="font-family:'微軟正黑體',sans-serif">{{ course_name[0:pos + 1] }}</span>
                                 </p>
-                                <p class="MsoNormal" align="center" style="text-align:center">
+                                <p class="MsoNormal" style="text-align:center">
                                     <span style="font-family:'微軟正黑體',sans-serif">{{ course_name[pos + 1:] }}</span>
                                 </p>
                                 {% else %}
-                                <p class="MsoNormal" align="center" style="text-align:center">
+                                <p class="MsoNormal" style="text-align:center">
                                     <span style="font-family:'微軟正黑體',sans-serif">{{ course_name }}</span>
                                 </p>
                                 {% endif %}
@@ -268,7 +262,7 @@ div.WordSection1
                         {% endif %}
 
                         {% if teacher.courses[week][t] | length > 1 %}
-                            <p class="MsoNormal" align="center" style="text-align:center">
+                            <p class="MsoNormal" style="text-align:center">
                             {% for _, cls in teacher.courses[week][t].items() %}
                                 {% for class_id in cls %}
                                     <span style="font-family:'微軟正黑體',sans-serif">
@@ -280,14 +274,14 @@ div.WordSection1
                         {% else %}
                             {% for _, cls in teacher.courses[week][t].items() %}
                                 {% if cls | length > 2 %}
-                                    <p class="MsoNormal" align="center" style="text-align:center">
+                                    <p class="MsoNormal" style="text-align:center">
                                     {% for class_id in cls[0:2] %}
                                         <span style="font-family:'微軟正黑體',sans-serif">
                                             <a href="C{{ class_id }}.HTML">{{ classes[class_id].class_num }}</a>
                                         </span>
                                     {% endfor %}
                                     </p>
-                                    <p class="MsoNormal" align="center" style="text-align:center">
+                                    <p class="MsoNormal" style="text-align:center">
                                     {% for class_id in cls[2:] %}
                                         <span style="font-family:'微軟正黑體',sans-serif">
                                             <a href="C{{ class_id }}.HTML">{{ classes[class_id].class_num }}</a>
@@ -295,7 +289,7 @@ div.WordSection1
                                     {% endfor %}
                                     </p>
                                 {% else %}
-                                    <p class="MsoNormal" align="center" style="text-align:center">
+                                    <p class="MsoNormal" style="text-align:center">
                                     {% for class_id in cls %}
                                         <span style="font-family:'微軟正黑體',sans-serif">
                                             <a href="C{{ class_id }}.HTML">{{ classes[class_id].class_num }}</a>
