@@ -1,3 +1,6 @@
+import threading
+import webbrowser
+
 from flask import Flask, request, send_file, render_template
 
 import converter
@@ -24,18 +27,8 @@ def index():
             return f"Error Occured: {e}"
     return render_template("index.html")
 
-
-@app.route("/test-download")
-def test_download():
-    from io import BytesIO
-    import zipfile
-
-    zip_buffer = BytesIO()
-    with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
-        zip_file.writestr("test.txt", "Hello, this is a test file!")
-
-    zip_buffer.seek(0)
-    return send_file(zip_buffer, download_name="test.zip", as_attachment=True)
+if __name__ == "__main__":
+    threading.Thread(target=lambda: webbrowser.open('http://localhost:5000')).run()
+    app.run()
 
 
-app.run()
