@@ -8,6 +8,13 @@ from typing import NewType, DefaultDict
 import xlrd
 import jinja2
 
+import os
+import sys
+
+if getattr(sys, "frozen", False):
+    base_path = os.path.dirname(sys.executable)
+else:
+    base_path = os.path.dirname(__file__)
 
 ClassID = NewType("ClassID", str)
 TeacherID = NewType("TeacherID", str)
@@ -31,8 +38,9 @@ class Teacher:
 Classes = NewType("Classes", dict[ClassID, Class])
 Teachers = NewType("Teachers", dict[TeacherID, Teacher])
 
+templates_path = os.path.join(base_path, "templates")
 env = jinja2.Environment(
-    loader=jinja2.FileSystemLoader("templates"),
+    loader=jinja2.FileSystemLoader(templates_path),
     extensions=["jinja2.ext.loopcontrols"],
 )
 class_template = env.get_template("class.html")
