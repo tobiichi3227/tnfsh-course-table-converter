@@ -4,7 +4,7 @@ jobs:
   build:
      strategy:
         matrix:
-          os: [ubuntu-latest, windows-latest]
+          os: [ubuntu-latest, windows-latest, macos-latest]
 
      runs-on: ${{ matrix.os }}
 
@@ -12,34 +12,17 @@ jobs:
         - name: Check-out repository
           uses: actions/checkout@v4
 
-        - name: Setup Python
-          uses: actions/setup-python@v4
+        - name: Setup Golang
+          uses: actions/setup-go@v5
           with:
-           python-version: '3.13'
+           go-version: '>=1.24.0'
 
-        - name: Setup Poetry
-          run: |
-            curl -sSL https://install.python-poetry.org | python3 -
-
-        - name: Install your Dependencies
-          run: |
-           pip install -r requirements.txt --break-system-packages
-
-        - name: Build Executable with Nuitka
-          uses: Nuitka/Nuitka-Action@main
-          with:
-           nuitka-version: main
-           script-name: server.py
-           # many more Nuitka options available, see action doc, but it's best
-           # to use nuitka-project: options in your code, so e.g. you can make
-           # a difference for macOS and create an app bundle there.
-           mode: standalone
-           include-data-dir: templates=templates
+        - name: Build Executable
+          run: go build -ldflags='-s -w'
 
         - name: Upload Artifacts
           uses: actions/upload-artifact@v4
           with:
            name: ${{ runner.os }} Build
            path: | # match what's created for the 3 OSes
-              build/*.dist/*
-              build/*.dist/*
+            tnfsh-course-table-converter*
