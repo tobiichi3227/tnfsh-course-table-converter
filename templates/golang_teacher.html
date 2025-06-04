@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教師課表</title>
+<style>
+ @font-face
+    {font-family:新細明體;}
+@font-face
+    {font-family:細明體;}
+@font-face
+    {font-family:"Cambria Math";}
+@font-face
+    {font-family:微軟正黑體;}
+@font-face
+    {font-family:"\@微軟正黑體";}
+@font-face
+    {font-family:"\@細明體";}
+@font-face
+    {font-family:"\@新細明體";}
+ @media (max-width: 576px) {
+    p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:8.0pt;
+        font-family:"新細明體",serif;
+        }
+ }
+ @media (max-width: 767px) {
+    p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:10.0pt;
+        font-family:"新細明體",serif;
+        }
+ }
+
+ @media (min-width: 768px) {
+    p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:12.0pt;
+        font-family:"新細明體",serif;
+        }
+ }
+h1
+    {
+    margin-right:0cm;
+    margin-left:0cm;
+    font-size:30.0pt;
+    font-family:細明體;
+    }
+h2
+    {
+    margin-right:0cm;
+    margin-left:0cm;
+    font-size:27.0pt;
+    font-family:細明體;
+    }
+h3
+    {
+    margin-right:0cm;
+    margin-left:0cm;
+    font-size:24.0pt;
+    font-family:細明體;
+    }
+h4
+    {    margin-right:0cm;
+    margin-left:0cm;
+    font-size:21.0pt;
+    font-family:細明體;
+    }
+h5
+    {    margin-right:0cm;
+    margin-left:0cm;
+    font-size:15.0pt;
+    font-family:細明體;
+    }
+h6
+    {
+    margin-right:0cm;
+    margin-left:0cm;
+    font-size:12.0pt;
+    font-family:細明體;
+    }
+a:link, span.MsoHyperlink
+    {
+    color:blue;
+    text-decoration:underline;
+    text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+    {
+    color:blue;
+    text-decoration:underline;
+    text-underline:single;}
+span.1
+    {
+    font-family:"Calibri Light",sans-serif;
+    font-weight:bold;}
+span.2
+    {
+    font-family:"Calibri Light",sans-serif;
+    font-weight:bold;}
+span.3
+    {    font-family:"Calibri Light",sans-serif;
+    font-weight:bold;}
+span.4
+    {    font-family:"Calibri Light",sans-serif;
+ }
+span.5
+    {    font-family:"Calibri Light",sans-serif;
+    font-weight:bold;}
+span.6
+    {    font-family:"Calibri Light",sans-serif;
+ }
+.MsoChpDefault
+    {    font-size:10.0pt;
+    }
+@page WordSection1
+    {size:595.3pt 841.9pt;
+    margin:72.0pt 90.0pt 72.0pt 90.0pt;
+    }
+div.WordSection1
+    {page:WordSection1;}
+</style>
+</head>
+
+<body lang=ZH-TW>
+    <div class=WordSection1>
+        <p class=MsoNormal style='margin-bottom:12.0pt'><span lang=EN-US
+        style='font-family:"微軟正黑體",sans-serif'></span></p>
+
+        <h5 style='text-align:center'>
+            <span lang=EN-US style='font-family: "微軟正黑體",sans-serif'>{{ .Teacher.TeacherID }}</span>
+            <span style="font-family:'微軟正黑體',sans-serif;color:blue">{{ .Teacher.Name }}</span>
+            <span style='font-family:"微軟正黑體",sans-serif'>教師課表
+                <span lang=EN-US></span>
+            </span>
+        </h5>
+
+        <p class=MsoNormal style='text-align:center'>
+            <span style='font-family:"微軟正黑體",sans-serif;color:red'>更新日期：<span lang=EN-US>{{ .UpdateTimestamp }}</span></span>
+            <span lang=EN-US style='font-family:"微軟正黑體",sans-serif'></span>
+        </p>
+
+        <div style='text-align: -webkit-center;'>
+            <table class=MsoNormalTable border=1
+            style='width:90.0%;mso-cellspacing:.6pt;border:outset 1.5pt;'>
+                <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+                    <td colspan=8 style='padding:.6pt .6pt .6pt .6pt'>
+                        <p class=MsoNormal style='text-align:right'><b><span lang=EN-US
+                        style='font-family:"微軟正黑體",sans-serif'><br>
+                        <a href="_TeachIndex.HTML"><span lang=EN-US><span lang=EN-US>回教師課表索引頁</span></span></a></span></b></p>
+                    </td>
+                </tr>
+
+                <tr style='mso-yfti-irow:1;'>
+                    <td colspan=2 style='padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'>&nbsp;</span></p>
+                    </td>
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>一</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>二</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>三</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>四</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td style='width:15.0%;padding:.6pt .6pt .6pt .6pt'>
+                    <p class=MsoNormal style='text-align:center'><b><span
+                    style='font-family:"微軟正黑體",sans-serif'>五</span></b><span lang=EN-US
+                    style='font-family:"微軟正黑體",sans-serif'></span></p>
+                    </td>
+                    <td style='border:none;padding:.6pt .6pt .6pt .6pt'></td>
+                </tr>
+
+                {{- range $index0, $t := .TH -}}
+                <tr style='mso-yfti-irow:{{ $index0 }}'>
+                    {{- if eq $index0 0 -}}
+                        {{- continue -}}
+                    {{- end -}}
+
+                    {{- if eq $index0 5 -}}
+                        <tr style="mso-yfti-irow:6">
+                            <td colspan="8" style="background:#BBBBBB;padding:.6pt .6pt .6pt .6pt">
+                            <p class="MsoNormal" style="text-align:center"><span style="font-family:'微軟正黑體',sans-serif">午休<span lang="EN-US"></span></span></p>
+                            </td>
+                        </tr>
+                        {{- continue -}}
+                    {{- end -}}
+
+                    <td style="padding:.6pt .6pt .6pt .6pt">
+                        <p class="MsoNormal" style="text-align:center"><span style="font-family:'微軟正黑體',sans-serif">第<span lang="EN-US"><br>
+                        </span>{{ (index $.TIMEINFO $index0).Number }}<span lang="EN-US"><br>
+                        </span>節<span lang="EN-US"></span></span></p>
+                    </td>
+                    <td style="padding:.6pt .6pt .6pt .6pt">
+                        <p class="MsoNormal" style="text-align:center"><span lang="EN-US" style="font-family:'微軟正黑體',sans-serif">{{ (index $.TIMEINFO $index0).StartTime }}<br>
+                        </span><span style="font-family:'微軟正黑體',sans-serif">｜<span lang="EN-US"><br>
+                        {{ (index $.TIMEINFO $index0).EndTime }}</span></span></p>
+                    </td>
+
+                    {{- range $week := 6 -}}
+                        {{- if eq $week 0 -}}
+                            {{- continue -}}
+                        {{- end -}}
+
+                        <td style="padding:.6pt .6pt .6pt .6pt">
+                            {{- if gt ((index $.Teacher.Courses $week $t) | len) 1 -}}
+                                <p class="MsoNormal" style="text-align:center">
+                                {{- range $courseName, $_ := (index $.Teacher.Courses $week $t) -}}
+                                    <span style="font-family:'微軟正黑體',sans-serif">{{ $courseName }}</span>
+                                {{- end -}}
+                                </p>
+                            {{- else -}}
+                                {{- range $courseName, $_ := (index $.Teacher.Courses $week $t) -}}
+                                    {{- $pos := Find $courseName "-" -}}
+                                    {{- if EqInt $pos -1 -}}
+                                        {{- $pos = Find $courseName "：" -}}
+                                    {{- end -}}
+
+                                    {{- if and (ne $pos -1) (gt ($courseName | Utf8Len) 10) -}}
+                                        <p class="MsoNormal" style="text-align:center">
+                                            <span style="font-family:'微軟正黑體',sans-serif">{{ slice $courseName 0 (Add $pos 1) }}</span>
+                                        </p>
+                                        <p class="MsoNormal" style="text-align:center">
+                                            <span style="font-family:'微軟正黑體',sans-serif">{{ slice $courseName (Add $pos 1) }}</span>
+                                        </p>
+                                    {{- else -}}
+                                        <p class="MsoNormal" style="text-align:center">
+                                            <span style="font-family:'微軟正黑體',sans-serif">{{ $courseName }}</span>
+                                        </p>
+                                    {{- end -}}
+                                {{- end -}}
+                            {{- end -}}
+
+
+                            {{- if gt ((index $.Teacher.Courses $week $t) | len) 1 -}}
+                                <p class="MsoNormal" style="text-align:center">
+                                {{- range $_, $cls := (index $.Teacher.Courses $week $t) -}}
+                                    {{- range $classID := $cls -}}
+                                        <span style="font-family:'微軟正黑體',sans-serif">
+                                            <a href="C{{ $classID }}.HTML">{{ (index $.Classes $classID).Grade }}{{ printf "%02d" (index $.Classes $classID).Number }}</a>
+                                        </span>
+                                    {{- end -}}
+                                {{- end -}}
+                                </p>
+                            {{- else -}}
+                                {{- range $_, $cls := (index $.Teacher.Courses $week $t) -}}
+                                    {{- if gt ($cls | len) 2 -}}
+                                        <p class="MsoNormal" style="text-align:center">
+                                        {{- range $classID := slice $cls 0 2 -}}
+                                            <span style="font-family:'微軟正黑體',sans-serif">
+                                                <a href="C{{ $classID }}.HTML">{{ (index $.Classes $classID).Grade }}{{ printf "%02d" (index $.Classes $classID).Number }}</a>
+                                            </span>
+                                        {{- end -}}
+                                        </p>
+                                        <p class="MsoNormal" style="text-align:center">
+                                        {{- range $classID := slice $cls 2 -}}
+                                            <span style="font-family:'微軟正黑體',sans-serif">
+                                                <a href="C{{ $classID }}.HTML">{{ (index $.Classes $classID).Grade }}{{ printf "%02d" (index $.Classes $classID).Number }}</a>
+                                            </span>
+                                        {{- end -}}
+                                        </p>
+                                    {{- else -}}
+                                        <p class="MsoNormal" style="text-align:center">
+                                            {{- range $classID := $cls -}}
+                                                <span style="font-family:'微軟正黑體',sans-serif">
+                                                    <a href="C{{ $classID }}.HTML">{{ (index $.Classes $classID).Grade }}{{ printf "%02d" (index $.Classes $classID).Number }}</a>
+                                                </span>
+                                            {{- end -}}
+                                        </p>
+                                    {{- end -}}
+                                {{- end -}}
+                            {{- end -}}
+                        </td>
+                    {{- end -}}
+                </tr>
+                {{- end -}}
+            </table>
+        </div>
+
+    <p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'></span></p>
+    </div>
+</body>
+</html>
+<!-- Generated By tnfsh-course-table-converter -->
