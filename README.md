@@ -2,11 +2,9 @@
 
 ## Prerequisties
 
-- Python 3.8+
-- Poetry (recommended) or pip
+- Golang 1.24+
 
 ## Installation
-
 
 ### 1. Clone the repository:
 
@@ -17,47 +15,15 @@ cd tnfsh-course-table-converter
 
 ### 2. Install dependencies:
 
-#### Using Poetry (recommended)
-
-If you haven't installed Poetry yet, use the following command:
-
-```sh
-curl -sSL https://install.python-poetry.org | python3 -
+```bash
+go build
+go build -ldflags='-s -w' # Reduce executable file size
 ```
 
-Then, install all dependencies by running:
+### 3. Run:
 
-```sh
-poetry install
-```
-
-Activate the virtual environment:
-
-```sh
-poetry shell
-```
-
-#### Using pip
-
-Create and activate a virtual environment:
-
-```sh
-python -m venv venv
-source venv/bin/activate # On Windows use `venv\Scripts\activate`
-```
-
-Then, to install all dependencies, run:
-
-```sh
-pip install -r requirements.txt
-```
-
-### 3. Run the server:
-
-To start the server, run:
-
-```sh
-python server.py # Or `poetry run python server.py` if using Poetry
+```bash
+./tnfsh-course-table-converter # It will open a browser to show the upload page.
 ```
 
 ## Contributing
