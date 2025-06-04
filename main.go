@@ -3,6 +3,7 @@ package main
 import (
 	"archive/zip"
 	"bytes"
+	"embed"
 	"fmt"
 	"html/template"
 	"io"
@@ -17,6 +18,9 @@ import (
 
 	"github.com/extrame/xls"
 )
+
+//go:embed templates/*
+var templateFiles embed.FS
 
 type (
 	Class struct {
@@ -158,7 +162,7 @@ func convert(reader io.ReadSeeker) (*bytes.Buffer, error) {
 		},
 	}
 	ct := template.New("base").Funcs(funcMap)
-	ct, err = ct.ParseFiles("templates/golang_class.html", "templates/golang_teacher.html",
+	ct, err = ct.ParseFS(templateFiles, "templates/golang_class.html", "templates/golang_teacher.html",
 		"templates/golang_classindex.html", "templates/golang_teacherindex.html")
 	if err != nil {
 		return nil, err
@@ -338,7 +342,7 @@ func openBrowser(url string) {
 	}
 }
 
-var tmpl = template.Must(template.ParseFiles("templates/index.html"))
+var tmpl = template.Must(template.ParseFS(templateFiles, "templates/index.html"))
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
