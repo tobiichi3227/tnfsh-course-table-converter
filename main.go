@@ -88,9 +88,9 @@ func convert(reader io.ReadSeeker) (*bytes.Buffer, error) {
 		if err != nil {
 			continue
 		}
-		_, ok := classes[classID]
+		c, ok := classes[classID]
 		if !ok {
-			c := new(Class)
+			c = new(Class)
 			c.ClassID = classID
 			c.Grade = (classNum / 100)
 			c.Number = (classNum % 100)
@@ -102,12 +102,11 @@ func convert(reader io.ReadSeeker) (*bytes.Buffer, error) {
 			}
 			classNumToClass[classNum] = c
 		}
-		c := classes[classID]
 
 		teacherID := row.Col(9)
-		_, ok = teachers[teacherID]
+		t, ok := teachers[teacherID]
 		if !ok {
-			t := new(Teacher)
+			t = new(Teacher)
 			t.Name = row.Col(10)
 			t.TeacherID = teacherID
 			teachers[teacherID] = t
@@ -117,7 +116,6 @@ func convert(reader io.ReadSeeker) (*bytes.Buffer, error) {
 				}
 			}
 		}
-		t := teachers[teacherID]
 
 		week, err := strconv.Atoi(row.Col(2))
 		if err != nil {
