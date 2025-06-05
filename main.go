@@ -20,6 +20,7 @@ import (
 )
 
 //go:embed templates/*
+//go:embed static/*
 var templateFiles embed.FS
 
 type (
@@ -342,11 +343,11 @@ func openBrowser(url string) {
 	}
 }
 
-var tmpl = template.Must(template.ParseFS(templateFiles, "templates/index.html"))
+var indexTmpl = template.Must(template.ParseFS(templateFiles, "templates/index.html"))
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
-		err := tmpl.Execute(w, nil)
+		err := indexTmpl.Execute(w, nil)
 		if err != nil {
 			http.Error(w, "Template error", http.StatusInternalServerError)
 			return
@@ -376,6 +377,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	fs := http.FileServerFS(templateFiles)
+	http.Handle("/static/", fs)
 	http.HandleFunc("/", handler)
 	go openBrowser("http://localhost:5000")
 	fmt.Println("Server started at http://localhost:5000")
