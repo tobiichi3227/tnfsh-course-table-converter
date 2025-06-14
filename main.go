@@ -15,6 +15,7 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
+	"unique"
 
 	"github.com/extrame/xls"
 )
@@ -28,12 +29,12 @@ type (
 		ClassID string
 		Grade   int
 		Number  int
-		Courses [6][9]map[string][]string
+		Courses [6][9]map[unique.Handle[string]][]string
 	}
 	Teacher struct {
 		TeacherID string
 		Name      string
-		Courses   [6][9]map[string][]string
+		Courses   [6][9]map[unique.Handle[string]][]string
 	}
 	Timeinfo struct {
 		Number    string
@@ -97,7 +98,7 @@ func convert(reader io.ReadSeeker) (*bytes.Buffer, error) {
 			classes[classID] = c
 			for i := range len(c.Courses) {
 				for j := range len(c.Courses[i]) {
-					c.Courses[i][j] = make(map[string][]string)
+					c.Courses[i][j] = make(map[unique.Handle[string]][]string)
 				}
 			}
 			classNumToClass[classNum] = c
@@ -112,7 +113,7 @@ func convert(reader io.ReadSeeker) (*bytes.Buffer, error) {
 			teachers[teacherID] = t
 			for i := range len(t.Courses) {
 				for j := range len(t.Courses[i]) {
-					t.Courses[i][j] = make(map[string][]string)
+					t.Courses[i][j] = make(map[unique.Handle[string]][]string)
 				}
 			}
 		}
@@ -126,7 +127,7 @@ func convert(reader io.ReadSeeker) (*bytes.Buffer, error) {
 			continue
 		}
 
-		courseName := row.Col(5)
+		courseName := unique.Make(row.Col(5))
 		if teacherID == "" {
 			teacherID = "empty"
 		}
